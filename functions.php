@@ -31,73 +31,77 @@ add_image_size('blog-large', 800, 600, false);
 add_image_size('blog-small', 300, 200, true);
 
 
-// Register Sidebars
-function my_sidebars()
-{
-
-
-			register_sidebar(
-
-						array(
-
-								'name' => 'Page Sidebar',
-								'id' => 'page-sidebar',
-								'before_title' => '<h3 class="widget-title">',
-								'after_title' => '</h3>'
-
-						)
-
-			);
-
-
-			register_sidebar(
-
-						array(
-
-								'name' => 'Blog Sidebar',
-								'id' => 'blog-sidebar',
-								'before_title' => '<h3 class="widget-title">',
-								'after_title' => '</h3>'
-
-						)
-
-			);
-
-
-
-}
-add_action('widgets_init','my_sidebars');
-
-
-function my_first_post_type()
-{
-
-	$args = array(
-
-
-		'labels' => array(
-
-					'name' => 'Cars',
-					'singular_name' => 'Car',
-		),
-		'hierarchical' => true,
-		'public' => true,
-		'has_archive' => true,
-		'menu_icon' => 'dashicons-images-alt2',
-		'supports' => array('title', 'editor', 'thumbnail','custom-fields'),
-		//'rewrite' => array('slug' => 'cars'),	
-
-	);
-
-
-	register_post_type('cars', $args);
-
-
-}
-add_action('init', 'my_first_post_type');
-
 //Navigation Menu
 register_nav_menus(array(
 	'primary' => __( 'Primary Menu'),
-))
+));
+
+function posts_nav() {
+ 
+    if( is_singular() )
+        return;
+
+    global $wp_query;
+ 
+    /** Stop execution if there's only 1 page */
+    if( $wp_query->max_num_pages <= 1 )
+        return;
+ 
+    $paged = get_query_var( 'paged' ) ? absint( get_query_var( 'paged' ) ) : 1;
+    $max   = intval( $wp_query->max_num_pages );
+ 
+    /** Add current page to the array */
+    if ( $paged >= 1 )
+        $links[] = $paged;
+ 
+    /** Add the pages around the current page to the array */
+    if ( $paged >= 3 ) {
+        $links[] = $paged - 1;
+        $links[] = $paged - 2;
+    }
+ 
+    if ( ( $paged + 2 ) <= $max ) {
+        $links[] = $paged + 2;
+        $links[] = $paged + 1;
+    }
+ 
+    echo '<div class="navigation"><ul>' . "\n";
+ 
+    /** Previous Post Link */
+    if ( get_previous_posts_link() )
+        printf( '<li>%s</li>' . "\n", get_previous_posts_link() );
+ 
+    /** Link to first page, plus ellipses if necessary */
+    if ( ! in_array( 1, $links ) ) {
+        $class = 1 == $paged ? ' class="active"' : '';
+ 
+        printf( '<li%s><a href="%s">%s</a></li>' . "\n", $class, esc_url( get_pagenum_link( 1 ) ), '1' );
+ 
+        if ( ! in_array( 2, $links ) )
+            echo '<li>…</li>';
+    }
+ 
+    /** Link to current page, plus 2 pages in either direction if necessary */
+    sort( $links );
+    foreach ( (array) $links as $link ) {
+        $class = $paged == $link ? ' class="active"' : '';
+        printf( '<li%s><a href="%s">%s</a></li>' . "\n", $class, esc_url( get_pagenum_link( $link ) ), $link );
+    }
+ 
+    /** Link to last page, plus ellipses if necessary */
+    if ( ! in_array( $max, $links ) ) {
+        if ( ! in_array( $max - 1, $links ) )
+            echo '<li>…</li>' . "\n";
+ 
+        $class = $paged == $max ? ' class="active"' : '';
+        printf( '<li%s><a href="%s">%s</a></li>' . "\n", $class, esc_url( get_pagenum_link( $max ) ), $max );
+    }
+ 
+    /** Next Post Link */
+    if ( get_next_posts_link() )
+        printf( '<li>%s</li>' . "\n", get_next_posts_link() );
+ 
+    echo '</ul></div>' . "\n";
+ 
+}
 ?>

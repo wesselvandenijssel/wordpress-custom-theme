@@ -1,7 +1,5 @@
 <?php get_header();?>
 
-<section class="page-wrap">
-<div class="container">
 	
 			
 			<?php if(has_post_thumbnail()):?>

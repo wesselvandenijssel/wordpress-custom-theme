@@ -26,6 +26,10 @@
             <div id="upper-section">
                 <div id="logo"><img src="wp-content/themes/thema_wesselvandenijssel/assets/images/SBlogo.svg" alt="">
                 </div>
+                <h1 id="title">
+                <?php
+    echo ucwords(strtolower(str_replace(' ', '', wp_title('', false))));
+?></h1>
                 <nav class="nav">
                     <div id="wp_nav">
 						<?php
