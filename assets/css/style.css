@@ -731,3 +731,225 @@ div.comment:first-of-type {
 .comment-reply-title small a:hover {
 	text-decoration: underline;
 }
+#logo{
+    width: 301px;
+    height: 71px;
+    margin-left: 42px;
+    margin-top: 24px;
+}
+#upper-section{
+    display: flex;
+    justify-content: space-between;
+    background-image: url("../../../../../wp-content/themes/thema_wesselvandenijssel/assets/images/Header.png");
+    background-size: cover;
+    height: 250px;
+}
+#nav{
+    margin-top: 51px;
+    font-family: Proxima Nova Semibold;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: 22px;
+}
+#wp_nav{
+    color: #ffffff;
+    margin: 15px;
+}
+.menu-primary-container ul li a{
+    color: #ffffff;
+}
+.menu-primary-container ul li{
+    list-style: none;
+    float: left;
+    padding-top: 21px;
+    padding-right: 37px;
+}
+@font-face {
+    font-family: Proxima Nova Semibold;
+    src: url(../fonts/FontsFree-Net-Proxima-Nova-Sbold.otf);
+}
+#nav p #right{
+    margin-right: 42px;
+}
+.current_page_item a{
+    text-decoration:underline;
+    text-decoration-color: #E95E30 ;
+}
+footer p{
+  font-family: "Proxima Nova Semibold";
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: 15px;
+  margin-bottom: -5px;
+}
+.container{
+    justify-content: space-around;
+    display: flex;
+    width: 1024px;
+}
+.main{
+    background-color: #F4F4F4;
+}
+.card{
+    background-color: #ffffff;
+    width: 473px;
+    height: 659px;
+    margin-top: 49.5px;
+    margin-bottom: 49.5px;
+    display: flex;
+}
+.head_text{
+    height: 29px;
+  width: 250px;
+  color: #2B2B2B;
+  font-family: "Proxima Nova Semibold";
+  font-size: 24px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 29px;
+}
+.section{
+    margin: 25px;
+}
+input[type="text"]{
+    background-color: #FAFAFA;
+    border: none;
+    padding-bottom: 12px;
+    padding-left: 18px;
+    padding-right: 170px;
+    padding-top: 12px;
+  color: #C5C5C5;
+  font-size: 12px;
+  font-style: italic;
+  letter-spacing: 0;
+  line-height: 15px;
+  margin-bottom: 10px;
+}
+label{
+    width: 300px;
+}
+textarea{
+    height: 214px;
+  width: 380px;
+  background-color: #FAFAFA;
+}
+#submit{
+    height: 31px;
+  width: 192px;
+  border-radius: 18px;
+  background-color: #F27623;
+  color: #FFFFFF;
+  font-family: "Proxima Nova Semibold";
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 15px;
+  font-style: normal;
+  border: 0px;
+}
+input[type="file"]{
+    display: none;
+}
+.picture{
+    background-color: #FAFAFA;
+    border: none;
+    padding-bottom: 12px;
+    padding-left: 18px;
+    padding-top: 12px;
+    width: 141px;
+    display: inline-flex;
+    align-items: center;
+}
+.picture div{
+    height: 24px;
+  width: 80px;
+  border-radius: 18px;
+  background-color: #7D7D7D;
+  color: #FFFFFF;
+  font-family: "Proxima Nova Semibold";
+  font-size: 10px;
+  letter-spacing: 0;
+  line-height: 12px;
+  margin-left: 12px;
+  text-align: center;
+  padding: 5px;
+}
+.small_card{
+    height: 263px;
+    width: 200px;
+    background-color: #FFFFFF;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);
+    margin-bottom: 25px;
+}
+.card_heading{
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 24px;
+    display: flex;
+    height: 551px;
+}
+.background_picture{
+    background-image: url(../images/header.png);
+    height: 72px;
+    width: 200px;
+    padding-bottom: -5px;
+}
+.card_text{
+    padding: 20px;
+    height: 151px;
+}
+.heading{
+    height: 29px;
+    width: 123px;
+    color: #262626;
+    font-family: "Proxima Nova";
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 0;
+    line-height: 29px;
+}
+.card_text p{
+  height: 114px;
+  width: 160px;
+  color: #868686;
+  font-family: "Proxima Nova";
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: 19px;
+}
+.background_text{
+    display: flex;
+    color: #FFFFFF;
+    font-family: "Proxima Nova Semibold";
+    font-size: 8px;
+    font-style: italic;
+    letter-spacing: 0;
+    line-height: 9px;
+    height: 82px;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding-left: 18px;
+    padding-right: 18px;
+}
+.button_card{
+    margin-bottom: 12px;
+}
+#load{
+    height: 31px;
+  width: 192px;
+  border-radius: 18px;
+  background-color: #F27623;
+  color: #FFFFFF;
+  font-family: "Proxima Nova Semibold";
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 15px;
+  font-style: normal;
+  text-align: center;
+  padding: 9px;
+  border: 0px;
+  text-decoration: none;
+}
