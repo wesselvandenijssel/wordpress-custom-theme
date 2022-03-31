@@ -103,6 +103,45 @@ function posts_nav() {
  
     echo '</ul></div>' . "\n";
 }
+
+// Max Word Length
 add_filter( 'excerpt_length', function($length) {
     return 20;
 }, PHP_INT_MAX );
+
+// Form Submit
+if (isset($_POST["submit"])){
+    $date = date('Y-m-d H:i:s');
+    $title = $_POST['name'];
+    $text = $_POST['textarea'];
+    // $category = $_POST['category'];
+    $thumpnail = $_POST['file'];
+    $new = array(
+        'post_title' => $title,
+        'post_content' => $text,
+        'post_date' => $date,
+        'category' => 'default_category',
+        // 'post_image' => $thumpnail,
+        'post_status' => 'publish',
+        'comment_status' => 'closed'
+    );
+
+    $post_id = wp_insert_post( $new );
+    
+    $wp_filetype = wp_check_filetype( $getImageFile, null );
+
+$attachment_data = array(
+    'post_mime_type' => $wp_filetype['type'],
+    'post_title' => sanitize_file_name( $getImageFile ),
+    'post_content' => '',
+    'post_status' => 'inherit'
+);
+
+$attach_id = wp_insert_attachment( $attachment_data, $getImageFile, $post_id );
+    if( $post_id ){
+        echo "Post successfully published!";
+    } else {
+        echo "Something went wrong, try again.";
+    }
+    return;
+}

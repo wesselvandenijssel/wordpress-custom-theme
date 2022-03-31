@@ -840,6 +840,7 @@ textarea {
   line-height: 15px;
   font-style: normal;
   border: 0px;
+  margin-top: 4px;
 }
 input[type="file"] {
   display: none;
@@ -1041,3 +1042,18 @@ input[type="file"] {
   list-style: none;
   list-style-type: none;
 }
+#sui_upload_image_form #sui_image_caption{
+    width:500px;
+  }
+  #user_images{
+    font-size:12px;
+  }
+  #user_images th{
+    text-align:left;
+  }
+  #user_images td{
+    vertical-align:middle;
+  }
+  #user_images td input{
+    margin:0px;
+  }

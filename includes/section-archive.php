@@ -3,7 +3,7 @@
     <div class="background_picture"
         <?php if(has_post_thumbnail()):?>style="background-image: url(<?php the_post_thumbnail_url('blog-small'); endif;?>);">
         <div class="background_text">
-            <p><?php the_date('d-m-Y');?></p>
+            <p><?php the_time('d-m-Y');?></p>
             <?php the_category();?>
         </div>
     </div>

@@ -8,12 +8,12 @@
 
         <div class="card">
             <section class="section">
-                <form action="">
+                <form action="" method="post">
                     <h2 class="head_text">Plaats een blog bericht</h2>
-                    <label for="title">Berichtnaam</label><br>
-                    <input type="text" placeholder="Geen titel" name="title">
-                    <label for="Categorie">Categorie</label>
-                    <input type="text" placeholder="Geen Categorie" name="Categorie">
+                    <label for="name">Berichtnaam</label><br>
+                    <input type="text" placeholder="Geen titel" name="name" id='name'>
+                    <label for="category">Categorie</label>
+                    <input type="text" placeholder="Geen Categorie" name="category">
                     <label for="picture_text">Header afbeelding</label><br>
                     <label for="file" class="picture"><i class="las la-camera"></i>
                         <div>
@@ -21,8 +21,8 @@
                         </div>
                     </label>
                     <input type="file" accept="image/*" name="file" id="file"><br>
-                    <label for="message">Bericht</label><br>
-                    <textarea></textarea>
+                    <label for="textarea">Bericht</label><br>
+                    <textarea id='textarea' name="textarea"></textarea>
                     <div class="my-5 d-flex justify-content-center">
                         <input type="submit" id="submit" value="Bericht verzenden" class="center">
                     </div>
@@ -34,7 +34,7 @@
     <section class="row">
         <div class="card">
             <div class="card_heading">
-            <?php get_template_part('includes/section','page');?>
+                <?php get_template_part('includes/section','page');?>
             </div>
             <div class="mt-auto d-flex justify-content-center button_card">
                 <a href="blog" class="center" id="load">Meer laden</a>
@@ -42,11 +42,8 @@
         </div>
 
     </section>
-
-
-
 </div>
 </div>
-
-
+<?php
+?>
 <?php get_footer();?>
