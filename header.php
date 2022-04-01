@@ -23,7 +23,7 @@
 <body <?php body_class(); ?>>
     <div class="main">
         <header class="text-center">
-            <div id="upper-section">
+            <div id="upper-section" style="background-image: url(<?php echo home_url();?>/wp-content/themes/thema_wesselvandenijssel/assets/images/header.png);">
                 <div id="logo"><img src="<?php echo home_url();?>/wp-content/themes/thema_wesselvandenijssel/assets/images/SBlogo.png" alt="">
                 </div>
                 <h1 id="title">

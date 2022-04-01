@@ -732,7 +732,7 @@ div.comment:first-of-type {
 #upper-section {
   display: flex;
   justify-content: space-between;
-  background-image: url("../../../../../wp-content/themes/thema_wesselvandenijssel/assets/images/Header.png");
+  background-image: url("../../../../../wp-content/themes/thema_wesselvandenijssel/assets/images/header.png");
   background-size: cover;
   height: 250px;
 }
