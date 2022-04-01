@@ -1057,3 +1057,17 @@ input[type="file"] {
   #user_images td input{
     margin:0px;
   }
+  #cat{
+    background-color: #fafafa;
+  border: none;
+  padding-bottom: 12px;
+  padding-left: 18px;
+  padding-right: 170px;
+  padding-top: 12px;
+  color: #c5c5c5;
+  font-size: 12px;
+  font-style: italic;
+  letter-spacing: 0;
+  line-height: 15px;
+  margin-bottom: 10px;
+  }

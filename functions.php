@@ -7,6 +7,7 @@ function wesselvandenijssel_register_styles(){
 
 add_action('wp_enqueue_scripts', 'wesselvandenijssel_register_styles');
 
+
 // Theme Options
 add_theme_support('menus');
 add_theme_support('post-thumbnails');
@@ -110,38 +111,75 @@ add_filter( 'excerpt_length', function($length) {
 }, PHP_INT_MAX );
 
 // Form Submit
-if (isset($_POST["submit"])){
-    $date = date('Y-m-d H:i:s');
-    $title = $_POST['name'];
-    $text = $_POST['textarea'];
-    // $category = $_POST['category'];
-    $thumpnail = $_POST['file'];
-    $new = array(
-        'post_title' => $title,
-        'post_content' => $text,
-        'post_date' => $date,
-        'category' => 'default_category',
-        // 'post_image' => $thumpnail,
-        'post_status' => 'publish',
-        'comment_status' => 'closed'
-    );
 
-    $post_id = wp_insert_post( $new );
-    
-    $wp_filetype = wp_check_filetype( $getImageFile, null );
-
-$attachment_data = array(
-    'post_mime_type' => $wp_filetype['type'],
-    'post_title' => sanitize_file_name( $getImageFile ),
-    'post_content' => '',
-    'post_status' => 'inherit'
-);
-
-$attach_id = wp_insert_attachment( $attachment_data, $getImageFile, $post_id );
-    if( $post_id ){
-        echo "Post successfully published!";
-    } else {
-        echo "Something went wrong, try again.";
+/**
+ * Sideload an image and set it as the featured image.
+ * 
+ * Upload an image, attach it to a post, and set it as the featured image (the post thumbnail).
+ * Additional functionality: ability to pass $post_data to override values in wp_insert_attachment
+ * 
+ * @param string $url (required) The URL of the image to download
+ * @param int $post_id (required) The post ID the media is to be associated with
+ * @param array $post_data (optional) Array of key => values for wp_posts table (ex: 'post_title' => 'foobar', 'post_status' => 'draft')
+ * @return int|object The ID of the attachment or a WP_Error on failure
+ */
+ 
+function my_attach_external_image( $url = null, $post_id = null, $post_data = array() ) {
+    if ( !$url || !$post_id ) return new WP_Error('missing', "Need a valid URL and post ID...");
+    require_once( ABSPATH . 'wp-admin/includes/file.php' );
+    // Download file to temp location, returns full server path to temp file, ex; /home/user/public_html/mysite/wp-content/26192277_640.tmp
+    $tmp = download_url( $url );
+ 
+    // If error storing temporarily, unlink
+    if ( is_wp_error( $tmp ) ) {
+        @unlink($file_array['tmp_name']);   // clean up
+        $file_array['tmp_name'] = '';
+        return $tmp; // output wp_error
     }
-    return;
+ 
+    preg_match('/[^\?]+\.(jpg|JPG|jpe|JPE|jpeg|JPEG|gif|GIF|png|PNG)/', $url, $matches);    // fix file filename for query strings
+    $url_filename = basename($matches[0]);                                                  // extract filename from url for title
+    $url_type = wp_check_filetype($url_filename);                                           // determine file type (ext and mime/type)
+ 
+    // assemble file data (should be built like $_FILES since wp_handle_sideload() will be using)
+    $file_array['tmp_name'] = $tmp;                                                         // full server path to temp file
+
+        $file_array['name'] = $url_filename;
+ 
+    // set additional wp_posts columns
+    if ( empty( $post_data['post_title'] ) ) {
+        $post_data['post_title'] = basename($url_filename, "." . $url_type['ext']);         // just use the original filename (no extension)
+    }
+ 
+    // make sure gets tied to parent
+    if ( empty( $post_data['post_parent'] ) ) {
+        $post_data['post_parent'] = $post_id;
+    }
+ 
+    // required libraries for media_handle_sideload
+    require_once(ABSPATH . 'wp-admin/includes/file.php');
+    require_once(ABSPATH . 'wp-admin/includes/media.php');
+    require_once(ABSPATH . 'wp-admin/includes/image.php');
+ 
+    // do the validation and storage stuff
+    $att_id = media_handle_sideload( $file_array, $post_id, null, $post_data );             // $post_data can override the items saved to wp_posts table, like post_mime_type, guid, post_parent, post_title, post_content, post_status
+ 
+    // If error storing permanently, unlink
+    if ( is_wp_error($att_id) ) {
+        @unlink($file_array['tmp_name']);   // clean up
+        return $att_id; // output wp_error
+    }
+ 
+    // set as post thumbnail if desired
+        set_post_thumbnail($post_id, $att_id);
+ 
+    return $att_id;
+}
+add_shortcode( 'misha_uploader', 'misha_uploader_callback' );
+
+function misha_uploader_callback(){
+	return '<form action="' . get_stylesheet_directory_uri() . '/process_upload.php" method="post" enctype="multipart/form-data">
+	Your Photo: <input type="file" name="profilepicture" size="25" />
+	<input type="submit" name="submit" value="Submit" />
+	</form>';
 }

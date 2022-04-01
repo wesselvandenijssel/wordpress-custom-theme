@@ -8,7 +8,7 @@
 
         <div class="card">
             <section class="section">
-                <form action="" method="post">
+                <!-- <form action="" method="post" enctype="multipart/form-data">
                     <h2 class="head_text">Plaats een blog bericht</h2>
                     <label for="name">Berichtnaam</label><br>
                     <input type="text" placeholder="Geen titel" name="name" id='name'>
@@ -26,7 +26,27 @@
                     <div class="my-5 d-flex justify-content-center">
                         <input type="submit" id="submit" value="Bericht verzenden" class="center">
                     </div>
-                </form>
+                </form> -->
+                <form action="<?php echo get_stylesheet_directory_uri() ?>/process_upload.php" method="post" enctype="multipart/form-data">
+	
+	                <label for="name">Berichtnaam</label><br>
+                    <input type="text" placeholder="Geen titel" name="name" id='name' maxlength="8">
+                    <label for="category">Categorie</label>
+                    <!-- <input type="text" placeholder="Geen Categorie" name="category"> -->
+                    <p><?php wp_dropdown_categories()?></p>
+                    <label for="picture_text">Header afbeelding</label><br>
+                    <label for="file" class="picture"><i class="las la-camera"></i>
+                        <div>
+                            <p>Kies bestand</p>
+                        </div>
+                    </label>
+                    <input type="file" name="profilepicture" id="file" size="25"/><br>
+                    <label for="textarea">Bericht</label><br>
+                    <textarea id='textarea' name="textarea"></textarea>
+                    <div class="my-5 d-flex justify-content-center">
+                        <input type="submit" id="submit" value="Bericht verzenden" class="center">
+                    </div>
+</form>
             </section>
         </div>
     </section>
