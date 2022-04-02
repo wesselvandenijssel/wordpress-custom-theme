@@ -35,14 +35,16 @@ if( move_uploaded_file( $profilepicture['tmp_name'], $new_file_path ) ) {
 	$date = date('Y-m-d H:i:s');
     $title = $_POST['name'];
     $text = $_POST['textarea'];
-    // $category = $_POST['category'];
+    $category = $_POST['cat'];
     // $thumpnail = $_POST['file'];
-    echo "test";
+	echo $category;
+	// $new_cat_ID = get_cat_ID($category);
+	// echo $new_cat_ID;
     $new = array(
         'post_title' => $title,
         'post_content' => $text,
         'post_date' => $date,
-        'category' => 'default_category',
+        'post_category' => array($category),
         // 'post_image' => $thumpnail,
         'post_status' => 'publish',
         'comment_status' => 'closed'
@@ -73,6 +75,6 @@ if( move_uploaded_file( $profilepicture['tmp_name'], $new_file_path ) ) {
 	wp_update_attachment_metadata( $upload_id, wp_generate_attachment_metadata( $upload_id, $new_file_path ) );
 
 	// Show the uploaded file in browser
-	wp_redirect( home_url() );
+	// wp_redirect( home_url() );
 	set_post_thumbnail(  $post_id, $upload_id );
 }

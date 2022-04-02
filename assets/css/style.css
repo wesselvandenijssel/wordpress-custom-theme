@@ -732,7 +732,7 @@ div.comment:first-of-type {
 #upper-section {
   display: flex;
   justify-content: space-between;
-  background-image: url("../../../../../wp-content/themes/thema_wesselvandenijssel/assets/images/header.png");
+  /* background-image: url("../../../../../wp-content/themes/thema_wesselvandenijssel/assets/images/header.png"); */
   background-size: cover;
   height: 250px;
 }
@@ -946,6 +946,7 @@ input[type="file"] {
   padding: 9px;
   border: 0px;
   text-decoration: none;
+  margin-bottom: 14px;
 }
 #title {
   height: 58px;
