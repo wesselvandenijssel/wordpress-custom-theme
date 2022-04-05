@@ -1,7 +1,8 @@
 <?php if( have_posts() ): while( have_posts() ): the_post();?>
+<h2 class="heading"><?php the_title();?></h2>
 
-
-	<p><?php echo get_the_date('l jS F, Y');?></p>
+	<p><?php echo get_the_date('l j F Y');?></p>
+	<hr>
 
 
 	<?php the_content();?>
@@ -12,7 +13,10 @@
 	$lname = get_the_author_meta('last_name');
 	?>
 
-	<p>Posted by <?php echo $fname;?> <?php echo $lname;?></p>
+	<?php if ($fname){?>
+		<p>Posted by <?php echo $fname;?> <?php echo $lname;?></p>
+		<?php
+		}?>
 
 
 	<?php
@@ -41,16 +45,5 @@
 
 
 	<?php endforeach;?>
-
-
-
-
-
-
-
-	<?php // comments_template();?>
-
-
-
 
 <?php endwhile; else: endif;?>

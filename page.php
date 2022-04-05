@@ -27,9 +27,10 @@
                         <input type="submit" id="submit" value="Bericht verzenden" class="center">
                     </div>
                 </form> -->
-                <form action="<?php echo get_stylesheet_directory_uri() ?>/process_upload.php" method="POST" enctype="multipart/form-data">
-	
-	                <label for="name">Berichtnaam</label><br>
+                <form action="<?php echo get_stylesheet_directory_uri() ?>/process_upload.php" method="POST"
+                    enctype="multipart/form-data">
+
+                    <label for="name">Berichtnaam</label><br>
                     <input type="text" placeholder="Geen titel" name="name" id='name' maxlength="8">
                     <label for="category">Categorie</label>
                     <!-- <input type="text" placeholder="Geen Categorie" name="category"> -->
@@ -40,13 +41,13 @@
                             <p>Kies bestand</p>
                         </div>
                     </label>
-                    <input type="file" name="profilepicture" id="file" size="25"/><br>
+                    <input type="file" name="profilepicture" id="file" size="25" /><br>
                     <label for="textarea">Bericht</label><br>
                     <textarea id='textarea' name="textarea"></textarea>
-                    <div class="my-5 d-flex justify-content-center">
-                        <input type="submit" id="submit" value="Bericht verzenden" class="center">
+                    <div class="d-flex justify-content-center">
+                        <input type="submit" id="submit" value="Bericht verzenden" class="center orange_box">
                     </div>
-</form>
+                </form>
             </section>
         </div>
     </section>
@@ -56,7 +57,7 @@
             <div class="card_heading">
                 <?php get_template_part('includes/section','page');?>
             </div>
-            <div class="mt-auto d-flex justify-content-center button_card">
+            <div class="d-flex justify-content-center button_card orange_box">
                 <a href="blog" class="center" id="load">Meer laden</a>
             </div>
         </div>

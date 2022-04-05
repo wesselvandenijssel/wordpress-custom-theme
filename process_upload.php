@@ -75,6 +75,6 @@ if( move_uploaded_file( $profilepicture['tmp_name'], $new_file_path ) ) {
 	wp_update_attachment_metadata( $upload_id, wp_generate_attachment_metadata( $upload_id, $new_file_path ) );
 
 	// Show the uploaded file in browser
-	// wp_redirect( home_url() );
+	wp_redirect( home_url() );
 	set_post_thumbnail(  $post_id, $upload_id );
 }

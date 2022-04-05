@@ -1,27 +1,34 @@
 <?php get_header();?>
-
-	
-			
-			<?php if(has_post_thumbnail()):?>
-
-				<img src="<?php the_post_thumbnail_url('blog-large');?>" alt="<?php the_title();?>" class="img-fluid mb-3 img-thumbnail">
-
-			<?php endif;?>
+<div class="container">
 
 
 
-			<h1><?php the_title();?></h1>
+    <section class="row">
 
 
-			<?php get_template_part('includes/section','blogcontent');?>
+        <div class="card">
+            <section class="section">
+                <img src="<?php the_post_thumbnail_url('blog-large');?>" alt="<?php the_title();?>"
+                    class="img-fluid mb-3 img-thumbnail">
+					<?php get_template_part('includes/section','blogcontent');?>
+            </section>
+        </div>
+    </section>
 
-
-			
-			<?php wp_link_pages();?>
-
-
+    <section class="row">
+        <div class="card">
+            <div class="card_heading">
+			<?php get_template_part('includes/section','page');?>
+            </div>
+            <div class="mt-auto d-flex justify-content-center button_card">
+                <a href="blog" class="center" id="load">Meer laden</a>
+            </div>
+        </div>
+    </section>
 </div>
-</section>
-
+</div>
+<?php
+?>
+<?php wp_link_pages();?>
 
 <?php get_footer();?>

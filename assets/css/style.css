@@ -787,7 +787,7 @@ footer p {
 .card {
   background-color: #ffffff;
   width: 473px;
-  height: 659px;
+  min-height: 659px;
   margin-top: 49.5px;
   margin-bottom: 49.5px;
   display: flex;
@@ -840,7 +840,6 @@ textarea {
   line-height: 15px;
   font-style: normal;
   border: 0px;
-  margin-top: 4px;
 }
 input[type="file"] {
   display: none;
@@ -893,6 +892,9 @@ input[type="file"] {
 .card_text {
   padding: 20px;
   height: 151px;
+}
+.card_heading a{
+  text-decoration: none;
 }
 .heading {
   height: 29px;
@@ -950,7 +952,7 @@ input[type="file"] {
 }
 #title {
   height: 58px;
-  width: 100px;
+  /* width: 100px; */
   color: #ffffff;
   font-family: "Proxima Nova";
   font-size: 48px;
@@ -1071,4 +1073,7 @@ input[type="file"] {
   letter-spacing: 0;
   line-height: 15px;
   margin-bottom: 10px;
+  }
+  .orange_box{
+    margin-top: 50px;
   }
