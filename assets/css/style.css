@@ -1117,3 +1117,39 @@ input[type="file"] {
   margin-right: 22px;
   margin-left: 22px;
 }
+.error_page {
+  text-align: center;
+  padding: 16px;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  display: contents;
+}
+
+.error_title{
+  margin: -10px 0 -30px;
+  font-size: calc(17vw + 40px);
+  opacity: .8;
+  letter-spacing: -17px;
+  display: block;
+}
+
+
+.fa-arrow-left {
+  position: fixed;
+  top: 30px;
+  left: 30px;
+  font-size: 2em;
+  color: white;
+  text-decoration: none
+}
+
+.fa-arrow-left:hover {
+  position: fixed;
+  color: #F27623;
+  text-decoration: none
+}
+.link{
+  color: #ffffff;
+}

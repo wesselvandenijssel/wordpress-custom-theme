@@ -1,3 +1,4 @@
+<!-- Check if have post -->
 <?php if( have_posts() ): while( have_posts() ): the_post();?>
 <div class="small_card" style="cursor: pointer;" onclick="window.location='<?php the_permalink();?>'">
         <div class="background_picture"

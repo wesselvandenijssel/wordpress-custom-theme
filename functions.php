@@ -1,5 +1,5 @@
 <?php 
-
+//CSS Path
 function wesselvandenijssel_register_styles(){
 
     wp_enqueue_style('wesselvandenijssel-style', get_template_directory_uri() . "/assets/css/style.css", array(), '1.0', 'all');
@@ -174,12 +174,4 @@ function my_attach_external_image( $url = null, $post_id = null, $post_data = ar
         set_post_thumbnail($post_id, $att_id);
  
     return $att_id;
-}
-add_shortcode( 'misha_uploader', 'misha_uploader_callback' );
-
-function misha_uploader_callback(){
-	return '<form action="' . get_stylesheet_directory_uri() . '/process_upload.php" method="post" enctype="multipart/form-data">
-	Your Photo: <input type="file" name="profilepicture" size="25" />
-	<input type="submit" name="submit" value="Submit" />
-	</form>';
 }
