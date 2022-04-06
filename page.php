@@ -6,7 +6,7 @@
     <section class="row">
 
 
-        <div class="card">
+        <div class="card col">
             <section class="section">
                 <!-- <form action="" method="post" enctype="multipart/form-data">
                     <h2 class="head_text">Plaats een blog bericht</h2>
@@ -31,7 +31,7 @@
                     enctype="multipart/form-data">
 
                     <label for="name">Berichtnaam</label><br>
-                    <input type="text" placeholder="Geen titel" name="name" id='name' maxlength="8">
+                    <input type="text" placeholder="Geen titel" name="name" id='name' maxlength="8"><br>
                     <label for="category">Categorie</label>
                     <!-- <input type="text" placeholder="Geen Categorie" name="category"> -->
                     <p><?php wp_dropdown_categories('show_option_none=Geen categorie', 'id=category')?></p>
@@ -53,7 +53,7 @@
     </section>
 
     <section class="row">
-        <div class="card">
+        <div class="card col">
             <div class="card_heading">
                 <?php get_template_part('includes/section','page');?>
             </div>

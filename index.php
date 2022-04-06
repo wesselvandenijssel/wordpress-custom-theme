@@ -4,7 +4,7 @@
 
 
     <section class="row">
-        <div class="large_card">
+        <div class="large_card col">
             <section class="section">
                 <div class="card_heading_large">
 
