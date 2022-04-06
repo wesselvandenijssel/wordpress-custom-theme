@@ -7,24 +7,23 @@ while ($the_query -> have_posts()) : $the_query -> the_post();
 
 // echo '<a href='.the_permalink().'>';
 ?>
-<a href="<?php the_permalink();?>">
-<div class="small_card">
-    <div class="background_picture"
-        <?php if(has_post_thumbnail()):?>style="background-image: url(<?php the_post_thumbnail_url('blog-small'); endif;?>);">
-        <div class="background_text">
-            <p><?php the_time('d-m-Y');?></p>
-            <p><?php the_category();?></p>
+    <div class="small_card" style="cursor: pointer;" onclick="window.location='<?php the_permalink();?>'">
+        <div class="background_picture"
+            <?php if(has_post_thumbnail()):?>style="background-image: url(<?php the_post_thumbnail_url('blog-small'); endif;?>);">
+            <div class="background_text">
+                <p><?php the_time('d-m-Y');?></p>
+                <p><?php the_category();?></p>
+            </div>
         </div>
+        <div class="card_text">
+            <h2 class="heading"><?php the_title();?></h2>
+            <?php the_excerpt();?>
+        </div>
+        
     </div>
-    <div class="card_text">
-        <h2 class="heading"><?php the_title();?></h2>
-        <?php the_excerpt();?>
-    </div>
-</div>
-</a>
+
 <?php 
 // Repeat the process and reset once it hits the limit
 endwhile;
 wp_reset_postdata();
 ?>
-
