@@ -3,6 +3,7 @@
 Wordpress website for Social Brothers
 
 Contains:
+
 • Navigation to click through the website
 
 • Footer
@@ -20,6 +21,8 @@ Contains:
 • Page where you can view all blogs.
 
 • Post page (when pressing a blog)
+
+
 
 View website: https://challengewes1.wpengine.com/
 Created by: Wessel van den IJssel "https://wesselvandenijssel.nl/"
